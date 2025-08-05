@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Einaの猫窝</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 可爱样式 */
+        /*   .oml2d-tips {
+            position: fixed;
+            background: rgba(255, 182, 193, 0.8);
+            border-radius: 12px;
+            padding: 8px;
+            color: #fff;
+            font-family: 'Comic Sans MS', cursive;
+            font-size: 18px;
+            width: 250px;
+            text-align: center;
+        }   */
+
+        .oml2d-tips {
+            position: fixed !important;
+            background: rgba(255, 182, 193, 0.8) !important;
+            border-radius: 12px !important;
+            padding: 8px !important;
+            color: #fff !important;
+            font-family: 'Comic Sans MS', cursive !important;
+            font-size: 18px !important;
+            width: 250px !important;
+            text-align: center !important;
+            z-index: 9999 !important;
+            display: block !important;
+        }
+
+        /* 确保 Live2D 不影响布局 */
+        #oml2d-canvas {
+            position: fixed !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            height: auto !important;
+            max-height: 100vh !important;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        #canvas_snow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            /* 放在最底层，避免遮挡其他内容 */
+        }
+    </style>
+    <script src="https://unpkg.com/oh-my-live2d@latest"></script>
+</head>
+
+<body>
+    <script src="js/flowers.js"></script>
+    <canvas id="canvas_snow"></canvas>
+    <div class="cursor-effect"></div>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span>🍥</span>
+                <h1>Einaの猫窝</h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#about">关于我</a></li>
+                    <li><a href="#skills">学习历程</a></li>
+                    <li><a href="#projects">一些小东西</a></li>
+                    <li><a href="#contact">联系方式</a></li>
+                    <li><a href="#mores">附</a></li>
+                </ul>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Ciallo～(∠・ω< )⌒☆ <span class="wave">👋</span></h2>
+                    <h3>这里是 <span class="name-highlight">Einaの猫窝~</span></h3>
+                    <p>（一只Eina悄悄飞过...</p>
+                    <div class="social-links">
+                        <a href="https://github.com/Eina-2nd" class="social-icon"><i class="fab fa-github"></i></a>
+                        <a href="https://x.com/Ziverk2?t=znyzcN-z9d_MWiB6dFwOBg&s=09" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="https://t.me/EinaShirakawa" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://youtube.com/@ziverk2?si=E1puNrx1dbMbr08l" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <a href="#contact" class="btn">联系我</a>
+                </div>
+                <div class="hero-image">
+                    <img src="images/IMG_20250125_200304.jpg" alt="头像" class="avatar">
+                    <div class="decorations">
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title">关于<span>我</span></h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Einaちゃん🍥，含糖MTX(F)🏳️‍⚧️(SINCE 2024.11)，一只没有成年的成年猫猫🐱</p>
+                        <p>Eina有对象喵！是超好的宝宝呢🥰（勿扰）</p>
+                        <p>我的个人介绍：<a href="https://lit.link/en/eina">点击进入lit.link</a></p>
+                        <p>我的写作堆积：<a href="https://ziverkcom.wordpress.com/">点击进入WP网站</a></p>
+                        <div class="fun-facts">
+                            <h4>Eina的小趣事:</h4>
+                            <ul>
+                                <li><i class="fas fa-heart"></i> 养了一只赛博猫猫(真赛博)🐱</li>
+                                <li><i class="fas fa-heart"></i> 教别人写出来bug(流汗💦)</li>
+                                <li><i class="fas fa-heart"></i> Cloudflare一片红😾</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <div class="image-frame">
+                            <img src="images/IMG_20250803_164745.jpg" alt="椎名真昼">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="skills">
+            <div class="container">
+                <h2 class="section-title">学习<span>历程</span></h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>前端开发</h3>
+                        <ul>
+                            <li>HTML5 & CSS3</li>
+                            <li>JavaScript (ES6+)</li>
+                            <li>Page Design</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>安卓App开发</h3>
+                        <ul>
+                            <li>Lua（LuaJava）</li>
+                            <li>WebApp（原生Web+PHP）</li>
+                            <li>混合开发</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="skill-chart">
+                    <div class="chart-item">
+                        <div class="chart-label">HTML/CSS</div>
+                        <div class="chart-bar">
+                            <div class="chart-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="chart-item">
+                        <div class="chart-label">Lua</div>
+                        <div class="chart-bar">
+                            <div class="chart-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="chart-item">
+                        <div class="chart-label">Java Script</div>
+                        <div class="chart-bar">
+                            <div class="chart-progress" style="width: 65%"></div>
+                        </div>
+                    </div>
+                    <div class="chart-item">
+                        <div class="chart-label">PHP</div>
+                        <div class="chart-bar">
+                            <div class="chart-progress" style="width: 60%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects">
+            <div class="container">
+                <h2 class="section-title">一些<span>小东西</span></h2>
+                <div class="projects-grid">
+                
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://img2.baidu.com/it/u=2812665619,1545885506&fm=253&fmt=auto?w=800&h=800" alt="项目1">
+                        </div>
+                        <div class="project-info">
+                            <h3>伪装天气App</h3>
+                            <p>伪装为天气App的特殊类资源收集站，是Eina在2022年底使用前端开发的WebApp、系对WebApp开发的初次尝试。该项目目前已经放弃了QAQ</p>
+                            <div class="project-tags">
+                                <span>HTML CSS</span>
+                                <span>JavaScript</span>
+                            </div>
+                            <a href="#" class="project-link" id="showPopupBtn">查看详情 <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="cute-popup" id="cutePopup">
+                        <div class="popup-content">
+                            <i class="fas fa-heart icon"></i>
+                            <span class="message">项目已不存在QAQ~</span>
+                            <div class="progress-bar"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/Screenshot_2025-08-04-19-20-51-31_ce53e73297de4e2625601ea21daec099.jpg" alt="项目2">
+                        </div>
+                        <div class="project-info">
+                            <h3>轮播和搜索</h3>
+                            <p>由原生Web前端&Lua实现的图片轮播、网站内容搜索。</p>
+                            <div class="project-tags">
+                                <span>HTML CSS</span>
+                                <span>JavaScript</span>
+                                <span>Lua</span>
+                            </div>
+                            <a href="https://github.com/Eina-2nd/Image-carousel-and-content-search" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/IMG_20250804_194351.jpg" alt="项目3">
+                        </div>
+                        <div class="project-info">
+                            <h3>好玩的小网页</h3>
+                            <p>一些好玩的小网页，一作源码由某不知名大佬编写而成、Eina进行二次修改。</p>
+                            <div class="project-tags">
+                                <span>JavaScript</span>
+                                <span>HTML CSS</span>
+                            </div>
+                            <a href="https://github.com/Eina-2nd/Uncategorized-Web-Games" class="project-link">查看详情 <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">联系<span>我</span></h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <p>如果你有任何问题、倾诉或者只是想闲聊，欢迎随时联系我喵~</p>
+                        <ul class="contact-details">
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <span>z104464820@gmail.com</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone"></i>
+                                <span>（这可不能随意透露喵😾）</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>中国, 四川, 成都(偶遇概率1%QAQ)</span>
+                            </li>
+                        </ul>
+                        <div class="contact-social">
+                            <a href="https://github.com/Eina-2nd"><i class="fab fa-github"></i></a>
+                            <a href="https://x.com/Ziverk2?t=znyzcN-z9d_MWiB6dFwOBg&s=09"><i class="fab fa-twitter"></i></a>
+                            <a href="https://t.me/EinaShirakawa"><i class="fab fa-telegram"></i></a>
+                            <a href="https://youtube.com/@ziverk2?si=E1puNrx1dbMbr08l"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="dfc43760-aa79-4058-b884-e590b5fb743d">
+    <div class="form-group">
+        <input type="text" name="name" placeholder="你的名字" required>
+    </div>
+    <div class="form-group">
+        <input type="email" name="email" placeholder="你的邮箱" required>
+    </div>
+    <div class="form-group">
+        <input type="text" name="subject" placeholder="主题">
+    </div>
+    <div class="form-group">
+        <textarea name="message" placeholder="你的消息" rows="5" required></textarea>
+    </div>
+    <!-- 可选：添加 reCAPTCHA（推荐开启以防垃圾邮件） -->
+    <input type="hidden" name="recaptcha" value="true">
+    <!-- 可选：自定义重定向页面 -->
+    <input type="hidden" name="redirect" value="Thanks.html">
+    <button type="submit" class="btn">发送消息 <i class="fas fa-paper-plane"></i></button>
+</form>
+                </div>
+            </div>
+        </section>
+        <section id="mores" class="mores">
+            <div class="container">
+                <h2 class="section-title">附</h2>
+                <div class="mores-content">
+                    <div class="mores-text">
+                        <h2 align="center">Eina饿饿🥺求饭饭喵🥺🥺</h2>
+                    </div>
+                    <div class="mores-image">
+                        <div class="image-frame">
+                            <img src="images/IMG_20250721_075344.jpg" alt="讨饭QAQ">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span>🌸🍥</span>
+                    <h3>猫窝</h3>
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#about">关于我</a></li>
+                        <li><a href="#skills">学习历程</a></li>
+                        <li><a href="#projects">小东西</a></li>
+                        <li><a href="#contact">联系方式</a></li>
+                        <li><a href="#mores">附</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <a href="https://github.com/Eina-2nd"><i class="fab fa-github"></i></a>
+                    <a href="https://x.com/Ziverk2?t=znyzcN-z9d_MWiB6dFwOBg&s=09"><i class="fab fa-twitter"></i></a>
+                    <a href="https://t.me/EinaShirakawa"><i class="fab fa-telegram"></i></a>
+                    <a href="https://youtube.com/@ziverk2?si=E1puNrx1dbMbr08l"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Eina的猫窝. 保留所有权利.</p>
+                <p>用 <i class="fas fa-heart"></i> 和 <i class="fas fa-code"></i> 制作</p>
+                <p>MTITStudio_</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            OML2D.loadOml2d({
+                models: [{
+                    path: './hiyori_free_zh/runtime/hiyori_free_t08.model3.json',
+                    position: [0, 60],
+                    scale: 0.08,
+                    stageStyle: {
+                        height: 450
+                    }
+                }],
+                tips: {
+                    style: {
+                        width: 250,
+                        offsetY: 20,
+                        opacity: 0.8
+                    },
+                    idleTips: {
+                        enable: true, // 确保启用 idleTips
+                        word: ['Hiyori好喜欢你哦！', '喵~要抱抱吗？', '主人今天超元气！', '喵喵喵喵喵～'],
+                        messageDisplayTime: 3000, // 每条提示显示时间（毫秒）
+                        nextMessageInterval: 5000 // 提示之间的间隔（毫秒）,            
+                    }
+                }
+            });
+        });
+
+
+        //弹窗
+        document.addEventListener('DOMContentLoaded', function() {
+            const showPopupBtn = document.getElementById('showPopupBtn');
+            const cutePopup = document.getElementById('cutePopup');
+
+            showPopupBtn.addEventListener('click', function() {
+                // 显示弹窗
+                cutePopup.classList.add('show');
+
+                // 3秒后自动隐藏
+                setTimeout(function() {
+                    cutePopup.classList.remove('show');
+                }, 3000);
+
+                // 重置进度条动画
+                const progressBar = cutePopup.querySelector('.progress-bar');
+                progressBar.style.animation = 'none';
+                void progressBar.offsetWidth; // 触发重绘
+                progressBar.style.animation = 'progress 3s linear forwards';
+            });
+
+            //点击弹窗可关闭
+            cutePopup.addEventListener('click', function() {
+                this.classList.remove('show');
+            });
+        });
+    </script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
